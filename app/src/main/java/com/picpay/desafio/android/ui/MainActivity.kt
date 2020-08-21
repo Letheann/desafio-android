@@ -1,19 +1,16 @@
 package com.picpay.desafio.android.ui
 
 import android.os.Bundle
-import android.view.View
-import android.widget.ProgressBar
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.picpay.desafio.android.R
 import com.picpay.desafio.android.helper.extensions.hide
 import com.picpay.desafio.android.helper.extensions.listen
 import com.picpay.desafio.android.helper.extensions.show
 import com.picpay.desafio.android.helper.extensions.toast
-import com.picpay.desafio.android.models.User
-import com.picpay.desafio.android.models.events.ViewEvents
+import com.picpay.desafio.android.models.ErrorRequest
+import com.picpay.desafio.android.models.SuccessGetUsers
+import com.picpay.desafio.android.models.ViewEvents
 import com.picpay.desafio.android.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -46,13 +43,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private fun initObservers() {
         viewModel.viewState().listen(this) {
             when (it) {
-                is ViewEvents.SuccessGetUsers -> successRequest(it.users)
-                is ViewEvents.ErrorRequest -> errorRequest()
+                is SuccessGetUsers -> successRequest(it.data)
+                is ErrorRequest -> errorRequest()
             }
         }
     }
 
-    private fun successRequest(users: List<User>) {
+    private fun successRequest(users: List<com.example.coredata.models.User>) {
         user_list_progress_bar.hide()
         adapter.users = users
     }

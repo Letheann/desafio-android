@@ -1,4 +1,4 @@
-package com.picpay.desafio.android.models
+package com.example.coredata.models
 
 import android.os.Parcelable
 import com.google.gson.annotations.SerializedName

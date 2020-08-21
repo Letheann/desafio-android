@@ -1,6 +1,7 @@
-package com.picpay.desafio.android.helper.extensions
+package com.example.coredata.extensions
 
-import com.picpay.desafio.android.helper.utils.Utils
+import android.content.Context
+import com.example.coredata.utils.Utils
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -15,8 +16,8 @@ inline fun <reified R : Any> Retrofit.provideInterface(): R {
     return this.create(R::class.java)
 }
 
-inline fun <reified R : Any> Call<R>.safeRequestCheckingNetwork(): R? {
-    return if (Utils.checkNetworkState()) {
+inline fun <reified R : Any> Call<R>.safeRequestCheckingNetwork(utils: Utils): R? {
+    return if (utils.checkNetworkState()) {
         this.execute().body()
     } else {
         this.cancel()

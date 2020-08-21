@@ -1,16 +1,14 @@
-package com.picpay.desafio.android.helper.utils
+package com.example.coredata.utils
 
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
-import com.picpay.desafio.android.MainApplication.Companion.context
 
-class Utils {
-    companion object {
+class Utils(private val androidContext: Context) {
         fun checkNetworkState(): Boolean {
             val connectivityManager =
-                context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+                androidContext.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                 val nw = connectivityManager.activeNetwork ?: return false
                 val actNw = connectivityManager.getNetworkCapabilities(nw) ?: return false
@@ -24,5 +22,4 @@ class Utils {
                 return nwInfo.isConnected
             }
         }
-    }
 }

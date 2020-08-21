@@ -1,8 +1,8 @@
-package com.picpay.desafio.android.repository
+package com.example.coredata.repository
 
-import com.picpay.desafio.android.BuildConfig
-import com.picpay.desafio.android.helper.extensions.build
-import com.picpay.desafio.android.helper.extensions.provideInterface
+import com.example.coredata.extensions.build
+import com.example.coredata.extensions.provideInterface
+
 import retrofit2.Retrofit
 
 

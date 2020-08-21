@@ -1,7 +1,8 @@
-package com.picpay.desafio.android.repository
+package com.example.coredata.repository
 
-import com.picpay.desafio.android.models.User
+import com.example.coredata.models.User
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.GET
 
 

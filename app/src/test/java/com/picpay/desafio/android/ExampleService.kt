@@ -1,13 +1,13 @@
 package com.picpay.desafio.android
 
-import com.picpay.desafio.android.models.User
-import com.picpay.desafio.android.repository.PicPayService
+import com.example.coredata.models.User
+import com.example.coredata.repository.PicPayService
 
 class ExampleService(
-    private val service: PicPayService
+    private val service: com.example.coredata.repository.PicPayService
 ) {
 
-    fun example(): List<User> {
+    fun example(): List<com.example.coredata.models.User> {
         val users = service.getUsers().execute()
 
         return users.body() ?: emptyList()
