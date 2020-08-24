@@ -9,8 +9,7 @@ import com.picpay.desafio.android.helper.extensions.listen
 import com.picpay.desafio.android.helper.extensions.show
 import com.picpay.desafio.android.helper.extensions.toast
 import com.picpay.desafio.android.models.ErrorRequest
-import com.picpay.desafio.android.models.SuccessGetUsers
-import com.picpay.desafio.android.models.ViewEvents
+import com.picpay.desafio.android.models.SuccessRequest
 import com.picpay.desafio.android.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -43,7 +42,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private fun initObservers() {
         viewModel.viewState().listen(this) {
             when (it) {
-                is SuccessGetUsers -> successRequest(it.data)
+                is SuccessRequest -> successRequest(it.data)
                 is ErrorRequest -> errorRequest()
             }
         }

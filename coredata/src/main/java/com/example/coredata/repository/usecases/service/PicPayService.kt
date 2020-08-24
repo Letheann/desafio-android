@@ -1,4 +1,4 @@
-package com.example.coredata.repository
+package com.example.coredata.repository.usecases.service
 
 import com.example.coredata.models.User
 import retrofit2.Call

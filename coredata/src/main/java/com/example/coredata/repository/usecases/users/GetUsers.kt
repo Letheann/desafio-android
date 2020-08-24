@@ -1,17 +1,16 @@
-package com.example.coredata.repository.usecases
+package com.example.coredata.repository.usecases.users
 
 import com.example.coredata.extensions.safeRequestCheckingNetwork
 import com.example.coredata.models.User
-import com.example.coredata.repository.PicPayService
+import com.example.coredata.repository.usecases.service.PicPayService
 import com.example.coredata.utils.Utils
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.*
 
 open class GetUsers(
     private val service: PicPayService,
     private val utils: Utils
-) {
-    suspend fun execute(): Flow<List<User>?> = flow {
+) : IGetUsers {
+    override suspend fun execute(): Flow<List<User>?> = flow {
         emit(service.getUsers().run {
             this.safeRequestCheckingNetwork(utils)
         })

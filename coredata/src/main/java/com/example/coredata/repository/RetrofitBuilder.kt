@@ -2,6 +2,7 @@ package com.example.coredata.repository
 
 import com.example.coredata.extensions.build
 import com.example.coredata.extensions.provideInterface
+import com.example.coredata.repository.usecases.service.PicPayService
 
 import retrofit2.Retrofit
 

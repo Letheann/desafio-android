@@ -2,8 +2,7 @@ package com.picpay.desafio.android
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
-import com.example.coredata.models.User
-import com.example.coredata.repository.PicPayService
+import com.example.coredata.repository.usecases.service.PicPayService
 import junit.framework.Assert.assertEquals
 import org.junit.Test
 import retrofit2.Call
@@ -11,7 +10,7 @@ import retrofit2.Response
 
 class ExampleServiceTest {
 
-    private val api = mock<com.example.coredata.repository.PicPayService>()
+    private val api = mock<PicPayService>()
 
     private val service = ExampleService(api)
 
