@@ -9,7 +9,7 @@ import kotlin.coroutines.CoroutineContext
 abstract class BaseViewModel : ViewModel(), CoroutineScope {
 
     override val coroutineContext: CoroutineContext = Dispatchers.IO
-    protected val jobs = ArrayList<Job>()
+    val jobs = ArrayList<Job>()
 
     override fun onCleared() {
         super.onCleared()

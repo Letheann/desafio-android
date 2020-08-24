@@ -3,11 +3,11 @@ package com.picpay.desafio.android.viewmodel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import com.example.coredata.models.User
+import com.example.coredata.models.request.ErrorRequest
+import com.example.coredata.models.request.SuccessRequest
+import com.example.coredata.models.request.ViewEvents
 import com.example.coredata.repository.usecases.users.IGetUsers
 import com.picpay.desafio.android.helper.extensions.add
-import com.picpay.desafio.android.models.ErrorRequest
-import com.picpay.desafio.android.models.SuccessRequest
-import com.picpay.desafio.android.models.ViewEvents
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
