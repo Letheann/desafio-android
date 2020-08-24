@@ -1,5 +1,6 @@
 package com.example.coredata.di
 
+import com.example.coredata.dao.DataBaseApp
 import com.example.coredata.repository.RetrofitBuilder
 import com.example.coredata.repository.usecases.users.GetUsers
 import com.example.coredata.repository.usecases.users.IGetUsers
@@ -8,9 +9,9 @@ import org.koin.android.ext.koin.androidContext
 import org.koin.dsl.module
 
 
-object CoreDataModules{
+object CoreDataModules {
     fun getModules() = arrayListOf(
-        apiModule
+        apiModule, dataBaseModule
     )
 
     private val apiModule = module {
@@ -19,8 +20,14 @@ object CoreDataModules{
         factory<IGetUsers> {
             GetUsers(
                 get(),
+                get(),
                 get()
             )
         }
+    }
+
+
+    private val dataBaseModule = module {
+        single { DataBaseApp.getInstance(androidContext()).userDB() }
     }
 }
