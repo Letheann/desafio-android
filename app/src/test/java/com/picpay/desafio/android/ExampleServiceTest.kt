@@ -2,7 +2,7 @@ package com.picpay.desafio.android
 
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.whenever
-import com.example.coredata.repository.usecases.service.PicPayService
+import com.example.coredata.repository.usecases.services.PicPayService
 import junit.framework.Assert.assertEquals
 import org.junit.Test
 import retrofit2.Call

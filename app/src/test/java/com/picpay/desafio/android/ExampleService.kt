@@ -1,6 +1,6 @@
 package com.picpay.desafio.android
 
-import com.example.coredata.repository.usecases.service.PicPayService
+import com.example.coredata.repository.usecases.services.PicPayService
 
 class ExampleService(
     private val service: PicPayService

@@ -1,9 +1,6 @@
 package com.example.coredata.dao.db
 
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 import com.example.coredata.models.User
 
 @Dao
@@ -13,4 +10,14 @@ interface UserDB {
 
     @Query("DELETE FROM user")
     suspend fun deleteAll()
+
+    @Transaction
+    suspend fun insertAndDelete(userDataList: List<User>?){
+        deleteAll()
+        insertList(userDataList)
+    }
+
+    @get:Query("SELECT * FROM user")
+    val all: List<User>
+
 }
