@@ -2,6 +2,7 @@ package com.picpay.desafio.android.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
 import com.example.coredata.models.User
 import com.example.coredata.models.request.ErrorRequest
 import com.example.coredata.models.request.SuccessRequest
@@ -17,7 +18,7 @@ class MainActivityViewModel(private val users: IGetUsers) : BaseViewModel() {
     fun viewState(): LiveData<ViewEvents<List<User>>> = state
 
     fun getUsers() {
-        jobs add launch {
+        jobs add viewModelScope.launch {
             users.execute().collect {
                 if (it != null) {
                     state.postValue(SuccessRequest(it))
@@ -27,5 +28,6 @@ class MainActivityViewModel(private val users: IGetUsers) : BaseViewModel() {
             }
         }
     }
+
 
 }

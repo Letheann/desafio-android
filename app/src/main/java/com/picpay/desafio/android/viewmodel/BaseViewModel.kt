@@ -1,14 +1,10 @@
 package com.picpay.desafio.android.viewmodel
 
 import androidx.lifecycle.ViewModel
-import kotlinx.coroutines.CoroutineScope
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
-import kotlin.coroutines.CoroutineContext
 
-abstract class BaseViewModel : ViewModel(), CoroutineScope {
+abstract class BaseViewModel : ViewModel() {
 
-    override val coroutineContext: CoroutineContext = Dispatchers.IO
     val jobs = ArrayList<Job>()
 
     override fun onCleared() {

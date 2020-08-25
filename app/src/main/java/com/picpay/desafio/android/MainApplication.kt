@@ -11,7 +11,6 @@ import org.koin.core.context.startKoin
 class MainApplication : Application() {
 
     companion object {
-        const val APPLICATION = "main"
         lateinit var context: Context
     }
 

@@ -7,7 +7,6 @@ import android.widget.Toast
 import com.picpay.desafio.android.R
 import com.squareup.picasso.Callback
 import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.list_item_user.view.*
 
 
 fun Activity.toast(text: String) {
