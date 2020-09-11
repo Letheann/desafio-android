@@ -9,14 +9,8 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 
 class MainApplication : Application() {
-
-    companion object {
-        lateinit var context: Context
-    }
-
     override fun onCreate() {
         super.onCreate()
-        context = applicationContext
         val modules = MainModule.getModules()
         modules.addAll(CoreDataModules.getModules())
         startKoin {
