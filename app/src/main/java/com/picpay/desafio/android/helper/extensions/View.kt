@@ -3,6 +3,7 @@ package com.picpay.desafio.android.helper.extensions
 import android.app.Activity
 import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.picpay.desafio.android.R
 import com.squareup.picasso.Callback
@@ -13,6 +14,15 @@ fun Activity.toast(text: String) {
     Toast.makeText(this, text, Toast.LENGTH_SHORT)
         .show()
 }
+
+fun ProgressBar.shouldLoading(condition: Boolean) {
+    if (condition) {
+        this.show()
+    } else {
+        this.hide()
+    }
+}
+
 
 fun View.hide() {
     this.visibility = View.GONE

@@ -1,18 +1,14 @@
 package com.picpay.desafio.android.ui.list
 
-import android.content.Context
 import android.os.Bundle
-import android.util.AttributeSet
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.coredata.models.request.CompletedRequest
 import com.example.coredata.models.request.ErrorRequest
+import com.example.coredata.models.request.LoadingRequest
 import com.example.coredata.models.request.SuccessRequest
 import com.picpay.desafio.android.R
-import com.picpay.desafio.android.helper.extensions.hide
-import com.picpay.desafio.android.helper.extensions.listen
-import com.picpay.desafio.android.helper.extensions.show
-import com.picpay.desafio.android.helper.extensions.toast
+import com.picpay.desafio.android.helper.extensions.*
 import com.picpay.desafio.android.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -47,15 +43,18 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             when (it) {
                 is SuccessRequest -> successRequest(it.data)
                 is ErrorRequest -> errorRequest()
+                is LoadingRequest -> loadingProgress(true)
+                is CompletedRequest -> loadingProgress(false)
             }
         }
     }
 
-    private fun successRequest(users: List<com.example.coredata.models.User>?) {
-        user_list_progress_bar.hide()
-        if (users != null) {
+    private fun loadingProgress(isLoading: Boolean) {
+        user_list_progress_bar.shouldLoading(isLoading)
+    }
+
+    private fun successRequest(users: List<com.example.coredata.models.User>) {
             adapter.users = users
-        }
     }
 
 
