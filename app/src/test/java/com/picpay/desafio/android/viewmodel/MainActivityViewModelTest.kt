@@ -2,7 +2,9 @@ package com.picpay.desafio.android.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.coredata.models.User
+import com.example.coredata.models.request.CompletedRequest
 import com.example.coredata.models.request.ErrorRequest
+import com.example.coredata.models.request.LoadingRequest
 import com.example.coredata.models.request.SuccessRequest
 import com.example.coredata.repository.usecases.users.IGetUsers
 import com.nhaarman.mockitokotlin2.doReturn
@@ -44,41 +46,62 @@ class MainActivityViewModelTest {
     @ExperimentalCoroutinesApi
     @Test
     fun `test request to set response as success`() = testCoroutineRule.runBlockingTest {
-
         repository.stub {
             onBlocking {
                 repository.execute()
             } doReturn flow {
-                emit(arrayListOf(User()))
+                emit(SuccessRequest(listOf(User())))
             }
         }
-
         viewModel = MainActivityViewModel(repository)
-        viewModel.getUsers()
-
         assert(
             viewModel.viewState().value is SuccessRequest
         )
-
     }
 
     @ExperimentalCoroutinesApi
     @Test
     fun `test request to set response as error`() = testCoroutineRule.runBlockingTest {
-
         repository.stub {
             onBlocking {
                 repository.execute()
             } doReturn flow {
-                emit(null)
+                emit(ErrorRequest)
             }
         }
-
         viewModel = MainActivityViewModel(repository)
-        viewModel.getUsers()
-
         assert(viewModel.viewState().value is ErrorRequest)
-
     }
+
+
+    @ExperimentalCoroutinesApi
+    @Test
+    fun `test request to set response as Loading`() = testCoroutineRule.runBlockingTest {
+        repository.stub {
+            onBlocking {
+                repository.execute()
+            } doReturn flow {
+                emit(LoadingRequest)
+            }
+        }
+        viewModel = MainActivityViewModel(repository)
+        assert(viewModel.viewState().value is LoadingRequest)
+    }
+
+
+    @ExperimentalCoroutinesApi
+    @Test
+    fun `test request to set response as Completed`() = testCoroutineRule.runBlockingTest {
+        repository.stub {
+            onBlocking {
+                repository.execute()
+            } doReturn flow {
+                emit(CompletedRequest)
+            }
+        }
+        viewModel = MainActivityViewModel(repository)
+        assert(viewModel.viewState().value is CompletedRequest)
+    }
+
 
 }
