@@ -22,19 +22,13 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
         init()
-        load()
     }
 
-    private fun load() {
-        viewModel.getUsers()
-    }
 
     private fun init() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.adapter = adapter
-        user_list_progress_bar.show()
         initObservers()
     }
 

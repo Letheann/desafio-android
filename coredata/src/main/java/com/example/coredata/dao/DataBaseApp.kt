@@ -8,7 +8,7 @@ import com.example.coredata.dao.db.UserDB
 import com.example.coredata.models.User
 import com.example.coredata.utils.Constants
 
-@Database(entities = [User::class], version = 1)
+@Database(entities = [User::class], version = 2)
 abstract class DataBaseApp : RoomDatabase() {
 
     abstract fun userDB(): UserDB

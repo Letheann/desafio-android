@@ -15,7 +15,11 @@ class MainActivityViewModel(private val users: IGetUsers) : BaseViewModel() {
     private val state = MutableLiveData<ViewEvents<List<User>>>()
     fun viewState(): LiveData<ViewEvents<List<User>>> = state
 
-    fun getUsers() {
+    init {
+        getUsers()
+    }
+
+    private fun getUsers() {
         jobs add viewModelScope.launch {
             users.execute().collect {
                 state.postValue(it)
