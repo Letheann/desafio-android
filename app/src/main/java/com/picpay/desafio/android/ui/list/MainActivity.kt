@@ -51,7 +51,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             adapter.users = users
     }
 
-
     private fun errorRequest() {
         user_list_progress_bar.hide()
         recyclerView.hide()
