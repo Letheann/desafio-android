@@ -1,0 +1,231 @@
+[versions]
+#ClassPath
+gradle_plugin = "8.2.0"
+kotlin = "1.9.21"
+ksp = "1.9.21-1.0.15"
+kotlin_rx = "1.7.1"
+google_service = "4.4.0"
+
+#Compose
+kotlin_compiler_extension_version = "1.5.6"
+compose_bom = "2023.10.01"
+compose_navigation = "2.7.6"
+compose_viewmodel = "2.6.2"
+compose_junit4 = "1.5.4"
+
+#Koin
+koin = "3.4.0"
+koin_test = "3.4.0"
+
+#Retrofit
+retrofit = "2.9.0"
+okhttp = "4.9.1"
+httpcore = "4.4.10"
+ok_http_dns = "4.9.3"
+moshi = "1.13.0"
+
+#Android
+support = "1.3.1"
+core_ktx = "1.6.0"
+browser = "1.3.0"
+cardview = "1.0.0"
+recyclerview = "1.2.1"
+material = "1.4.0"
+annotation = "1.2.0"
+constraint_layout = "2.1.0"
+multidex = "2.0.1"
+life_cycle = "2.6.2"
+vector_drawable = "1.1.0"
+navigation = "2.7.6"
+work_manager = "2.7.1"
+room = "2.6.1"
+viewmodel = "2.6.2"
+viewmodel_ext = "2.2.0"
+viewmodel_test = "2.2.0"
+legacy_support_v_4 = "1.0.0"
+camera_core = "1.0.0"
+gson = "2.9.0"
+picasso = "2.8"
+circle_image = "2.2.0"
+stetho = "1.5.1"
+coroutines_test = "1.5.1"
+
+#Test
+test_junit = "4.13.2"
+mockk = "1.13.2"
+roboletric = "4.11.1"
+mockito = "3.12.4"
+power_mock = "2.0.9"
+mockito_kotlin = "2.2.0"
+truth = "1.1.3"
+fragment_testing = "1.4.0-alpha03"
+objenesis = "2.6"
+
+#AndroidTest
+test_runner = "1.5.0"
+test_espresso = "3.5.1"
+test_rules = "1.5.0"
+test_hamcrest = "2.2"
+test_uiautomator = "2.2.0"
+test_ext = "1.1.5"
+mock_web_server = "3.10.0"
+databinding = "4.2.2"
+
+#Database
+sqlite = "2.1.0"
+zetetic = "4.4.3"
+
+
+[libraries]
+# Support
+support_activityKtx = { group = "androidx.activity", name = "activity-ktx", version.ref = "support" }
+support_appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "support" }
+support_cardView = { group = "androidx.cardview", name = "cardview", version.ref = "cardview" }
+support_design = { group = "com.google.android.material", name = "material", version.ref = "material" }
+support_recyclerView = { group = "androidx.recyclerview", name = "recyclerview", version.ref = "recyclerview" }
+support_browser = { group = "androidx.browser", name = "browser", version.ref = "browser" }
+support_coreKtx = { group = "androidx.core", name = "core-ktx", version.ref = "core_ktx" }
+support_vectorDrawable = { group = "androidx.vectordrawable", name = "vectordrawable-animated", version.ref = "vector_drawable" }
+support_annotation = { group = "androidx.annotation", name = "annotation", version.ref = "annotation" }
+support_exifinterface = { group = "androidx.exifinterface", name = "exifinterface", version.ref = "support" }
+support_constraintLayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraint_layout" }
+support_multDex = { group = "androidx.multidex", name = "multidex", version.ref = "multidex" }
+support_lifeCycleCompiler = { group = "androidx.lifecycle", name = "lifecycle-compiler", version.ref = "life_cycle" }
+support_lifecycleCommon = { group = "androidx.lifecycle", name = "lifecycle-common-java8", version.ref = "life_cycle" }
+support_databinding = { group = "androidx.databinding", name = "databinding-compiler", version.ref = "databinding" }
+support_workManager = { group = "androidx.work", name = "work-runtime-ktx", version.ref = "work_manager" }
+support_legacySupportv4 = { group = "androidx.legacy", name = "legacy-support-v4", version.ref = "legacy_support_v_4" }
+support_cameraCore = { group = "androidx.camera", name = "camera-core", version.ref = "camera_core" }
+
+# Compose
+compose_bom = { module = "androidx.compose:compose-bom", version.ref = "compose_bom" }
+compose_material = { module = "androidx.compose.material:material"}
+compose_ui = { module = "androidx.compose.ui:ui" }
+compose_toolingpreview = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose_foundation = { module = "androidx.compose.foundation:foundation" }
+compose_navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "compose_navigation" }
+compose_ui_tooling = { module = "androidx.compose.ui:ui-tooling" }
+compose_ui_tooling_preview = { module = "androidx.compose.ui:ui-tooling-preview" }
+compose_ui_test = { module = "androidx.compose.ui:ui-test-junit4" }
+compose_ui_navigation = { module = "androidx.navigation:navigation-testing" , version.ref = "compose_navigation"}
+compose_manifest = { module = "androidx.compose.ui:ui-test-manifest" }
+compose_uitest = { module = "androidx.compose.ui:ui-test" }
+compose_junit4 = { module = "androidx.compose.ui:ui-test-junit4",  version.ref = "compose_junit4" }
+compose_viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "compose_viewmodel" }
+compose_runtime_livedata = { module = "androidx.compose.runtime:runtime-livedata" }
+
+#Navigation
+navigation_fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
+navigation_ui = { group = "androidx.navigation", name = "navigation-ui-ktx", version.ref = "navigation" }
+
+#Kotlin
+kotlin_core = { group = "org.jetbrains.kotlin", name = "kotlin-stdlib", version.ref = "kotlin" }
+kotlin_coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines_test" }
+kotlin_coroutinesRX = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-rx2", version.ref = "kotlin_rx" }
+kotlin_reflection = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
+
+#Retrofit
+retrofit_core = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit_simpleXML = { group = "com.squareup.retrofit2", name = "converter-simplexml", version.ref = "retrofit" }
+retrofit_convertJson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+retrofit_convertScalars = { group = "com.squareup.retrofit2", name = "converter-scalars", version.ref = "retrofit" }
+retrofit_converterMoshi = { group = "com.squareup.retrofit2", name = "converter-moshi", version.ref = "retrofit" }
+retrofit_moshi = { group = "com.squareup.moshi", name = "moshi", version.ref = "moshi" }
+retrofit_moshiCodegen = { group = "com.squareup.moshi", name = "moshi-kotlin-codegen", version.ref = "moshi" }
+
+#OkHttp3
+okHttp3_core = { group = "com.squareup.okhttp3", name = "okhttp", version.ref = "okhttp" }
+okHttp3_interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "okhttp" }
+okHttp3_httpcore = { group = "org.apache.httpcomponents", name = "httpcore", version.ref = "httpcore" }
+okHttp3_okHttpDns = { group = "com.squareup.okhttp3", name = "okhttp-dnsoverhttps", version.ref = "ok_http_dns" }
+
+#Google
+google_gson = { group = "com.google.code.gson", name = "gson", version.ref = "gson" }
+
+#Image
+image_picasso = { group = "com.squareup.picasso", name = "picasso", version.ref = "picasso" }
+image_circleImage = { group = "de.hdodenhof", name = "circleimageview", version.ref = "circle_image" }
+
+#Room
+room_runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room_compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+room_ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+
+#Debug
+debug_stetho = { group = "com.facebook.stetho", name = "stetho", version.ref = "stetho" }
+
+#Test
+test_fragment = { group = "androidx.fragment", name = "fragment-testing", version.ref = "fragment_testing" }
+test_core = { group = "androidx.test", name = "core", version.ref = "test_runner" }
+test_runner = { group = "androidx.test", name = "runner", version.ref = "test_runner" }
+test_junit = { group = "junit", name = "junit", version.ref = "test_junit" }
+test_viewModelTest = { group = "androidx.arch.core", name = "core-testing", version.ref = "viewmodel_test" }
+test_mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+test_roboletric = { group = "org.robolectric", name = "robolectric", version.ref = "roboletric" }
+test_mockito = { group = "org.mockito", name = "mockito-core", version.ref = "mockito" }
+test_mockitoInline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockito" }
+test_koin = { group = "io.insert-koin", name = "koin-test", version.ref = "koin_test" }
+test_koinJUnit = { group = "io.insert-koin", name = "koin-test-junit5", version.ref = "koin_test" }
+test_powermockCore = { group = "org.powermock", name = "powermock-core", version.ref = "power_mock" }
+test_powermockModule = { group = "org.powermock", name = "powermock-module-junit4", version.ref = "power_mock" }
+test_powermockMockito = { group = "org.powermock", name = "powermock-api-mockito2", version.ref = "power_mock" }
+test_mockitoKoltin = { group = "com.nhaarman.mockitokotlin2", name = "mockito-kotlin", version.ref = "mockito_kotlin" }
+test_coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines_test" }
+test_truth = { group = "com.google.truth", name = "truth", version.ref = "truth" }
+test_databinding = { group = "androidx.databinding", name = "databinding-compiler", version.ref = "databinding" }
+test_objenesis = { group = "org.objenesis", name = "objenesis", version.ref = "objenesis" }
+test_espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "test_espresso" }
+test_reflection = { group = "org.jetbrains.kotlin", name = "kotlin-reflect", version.ref = "kotlin" }
+
+#AndroidTest
+androidTest_runner = { group = "androidx.test", name = "runner", version.ref = "test_runner" }
+androidTest_mockk = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
+androidTest_espresso = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "test_espresso" }
+androidTest_rules = { group = "androidx.test", name = "rules", version.ref = "test_rules" }
+androidTest_hamcrest = { group = "org.hamcrest", name = "hamcrest-library", version.ref = "test_hamcrest" }
+androidTest_uiautomator = { group = "androidx.test.uiautomator", name = "uiautomator", version.ref = "test_uiautomator" }
+androidTest_ext = { group = "androidx.test.ext", name = "junit", version.ref = "test_ext" }
+androidTest_mockWebServer = { group = "com.squareup.okhttp3", name = "mockwebserver", version.ref = "mock_web_server" }
+androidTest_navigation = { group = "androidx.navigation", name = "navigation-testing", version.ref = "navigation" }
+androidTest_databinding = { group = "androidx.databinding", name = "databinding-compiler", version.ref = "databinding" }
+androidTest_workManager = { group = "androidx.work", name = "work-testing", version.ref = "work_manager" }
+androidTest_koin = { group = "io.insert-koin", name = "koin-test", version.ref = "koin_test" }
+androidTest_mockitoInline = { group = "org.mockito", name = "mockito-inline", version.ref = "mockito" }
+androidTest_room = { group = "androidx.room", name = "room-testing", version.ref = "room" }
+
+#DataBase
+database_sqlite = { group = "androidx.sqlite", name = "sqlite", version.ref = "sqlite" }
+database_zetetic = { group = "net.zetetic", name = "android-database-sqlcipher", version.ref = "zetetic" }
+
+#ViewModel
+viewModel_lifecycleExtensions = { group = "androidx.lifecycle", name = "lifecycle-extensions", version.ref = "viewmodel_ext" }
+viewModel_livedata = { group = "androidx.lifecycle", name = "lifecycle-livedata-ktx", version.ref = "viewmodel" }
+viewModel_core = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "viewmodel" }
+
+#Koin
+koin_workManager = { group = "io.insert-koin", name = "koin-androidx-workmanager", version.ref = "koin" }
+koin_android = { group = "io.insert-koin", name = "koin-android", version.ref = "koin" }
+koin_androidCompat = { group = "io.insert-koin", name = "koin-android-compat", version.ref = "koin" }
+koin_compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
+
+# Plugins
+gradle_plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle_plugin" }
+kotlin_plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+navigation_plugin = { group = "androidx.navigation", name="navigation-safe-args-gradle-plugin" , version.ref = "navigation" }
+
+[bundles]
+koin = ["koin_workManager", "koin_android", "koin_androidCompat"]
+kotlin = ["kotlin_core", "kotlin_coroutines", "kotlin_reflection"]
+retrofit = ["retrofit_convertJson", "retrofit_convertScalars", "retrofit_converterMoshi"]
+okhttp = ["okHttp3_core", "okHttp3_interceptor"]
+androidSupport = ["support_annotation", "support_browser", "support_coreKtx", "support_vectorDrawable", "support_exifinterface"]
+androidSupportDesign = ["support_cardView", "support_design", "support_recyclerView", "support_constraintLayout"]
+unitTest = ["test_core", "test_junit", "test_viewModelTest", "test_mockk", "test_roboletric", "test_mockito", "test_koin", "test_powermockCore", "test_powermockModule", "test_powermockMockito", "test_mockitoInline", "test_mockitoKoltin", "test_coroutines", "test_koinJUnit", "test_reflection","test_truth"]
+androidTest = ["androidTest_espresso", "androidTest_rules", "androidTest_mockk", "androidTest_uiautomator", "androidTest_runner", "androidTest_mockWebServer", "androidTest_ext", "androidTest_navigation", "androidTest_databinding", "androidTest_workManager", "androidTest_koin", "androidTest_room", "test_viewModelTest"]
+viewModel = ["viewModel_core", "viewModel_lifecycleExtensions", "viewModel_livedata"]
+
+[plugins]
+android_application = { id = "com.android.application", version.ref = "gradle_plugin" }
+google_gms = { id = "com.google.gms.google-services", version.ref = "google_service" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
+room = { id = "androidx.room", version.ref = "room" }

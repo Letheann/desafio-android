@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import br.com.desafio.androidapp.R
 
 class UserListAdapter : RecyclerView.Adapter<UserListItemViewHolder>() {
 

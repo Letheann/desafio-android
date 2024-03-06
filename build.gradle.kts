@@ -1,0 +1,29 @@
+@Suppress("DSL_SCOPE_VIOLATION")
+plugins {
+    alias(libs.plugins.android.application) apply false
+    alias(libs.plugins.google.gms) apply false
+    alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.room) apply false
+}
+
+
+buildscript {
+    dependencies {
+        classpath(libs.kotlin.plugin)
+        classpath(libs.gradle.plugin)
+        classpath(libs.navigation.plugin)
+    }
+}
+
+allprojects{
+    configurations.all {
+        resolutionStrategy.force(libs.okHttp3.core)
+        resolutionStrategy.force(libs.okHttp3.core)
+        resolutionStrategy.force(libs.test.objenesis)
+        resolutionStrategy.force(libs.image.picasso)
+    }
+}
+
+tasks.register("clean").configure {
+    delete("build")
+}
