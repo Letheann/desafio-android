@@ -35,11 +35,24 @@ class MainActivityViewModel(private val useCase: PicPayUseCase) :
                         setState {
                             copy(items = ViewResource.Success(data = it))
                         }
+                        useCase.saveUsers(it)
                     }
                 }
 
                 is ViewIntent.OnClickCard -> {
                     setEffect { ViewEffect.ShowToastItem }
+                }
+
+                is ViewIntent.UpdateUiCharsByCache -> {
+                    useCase.getUsersByCache().catch {
+                        intent(ViewIntent.UpdateUiChars)
+                    }.onEmpty {
+                        intent(ViewIntent.UpdateUiChars)
+                    }.collect {
+                        setState {
+                            copy(items = ViewResource.Success(data = it))
+                        }
+                    }
                 }
             }
         }
@@ -49,12 +62,11 @@ class MainActivityViewModel(private val useCase: PicPayUseCase) :
 
 sealed class ViewIntent : BaseMviViewModel.BaseViewIntent {
     object UpdateUiChars : ViewIntent()
+    object UpdateUiCharsByCache : ViewIntent()
     object OnClickCard : ViewIntent()
-
-    object Update
 }
 
-data class ViewState(val items: ViewResource<List<User>> = ViewResource.Loading()) :
+data class ViewState(val items: ViewResource<List<User>>? = null) :
     BaseMviViewModel.BaseViewState
 
 sealed class ViewEffect : BaseMviViewModel.BaseViewEffect {

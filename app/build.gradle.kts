@@ -40,7 +40,9 @@ dependencies {
     //koin
     implementation(libs.bundles.koin)
 
-    //picasso
-    implementation(libs.image.picasso)
+    //room
+    implementation(libs.room.runtime)
+    implementation(libs.room.ktx)
+    ksp(libs.room.compiler)
 }
 

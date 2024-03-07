@@ -35,7 +35,7 @@ material = "1.4.0"
 annotation = "1.2.0"
 constraint_layout = "2.1.0"
 multidex = "2.0.1"
-life_cycle = "2.6.2"
+life_cycle = "2.7.0"
 vector_drawable = "1.1.0"
 navigation = "2.7.6"
 work_manager = "2.7.1"
@@ -115,7 +115,7 @@ compose_junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = 
 compose_viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "compose_viewmodel" }
 compose_runtime_livedata = { module = "androidx.compose.runtime:runtime-livedata" }
 compose_coil = { module = "io.coil-kt:coil-compose", version.ref = "compose_coil" }
-compose_lifecycle = {module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "life_cycle" }
+compose_lifecycle = { module = "androidx.lifecycle:lifecycle-runtime-compose", version.ref = "life_cycle" }
 
 #Navigation
 navigation_fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }

@@ -31,6 +31,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.rememberAsyncImagePainter
 import com.picpay.desafio.android.core.presentation.ViewResource
@@ -52,21 +53,31 @@ fun RecyclerCompose(
 
     val lifecycleOwner = LocalLifecycleOwner.current
 
+    val lifecycleState by lifecycleOwner.lifecycle.currentStateFlow.collectAsStateWithLifecycle()
+
+    LaunchedEffect(lifecycleState) {
+        when (lifecycleState) {
+            Lifecycle.State.RESUMED -> {
+                if (uiState.items == null) {
+                    viewModel.intent(ViewIntent.UpdateUiCharsByCache)
+                }
+            }
+            Lifecycle.State.CREATED -> {
+                viewModel.intent(ViewIntent.UpdateUiChars)
+            }
+
+            else -> {}
+        }
+    }
+
     DisposableEffect(lifecycleOwner) {
         val lifecycle = lifecycleOwner.lifecycle
-
         lifecycle.addObserver(viewModel)
-
         onDispose {
             lifecycle.removeObserver(viewModel)
             disposable.invoke()
         }
     }
-
-
-    LaunchedEffect(key1 = "", block = {
-        viewModel.intent(ViewIntent.UpdateUiChars)
-    })
 
     val refreshing by remember { mutableStateOf(false) }
     val state = rememberPullRefreshState(refreshing, refreshItems)
@@ -84,6 +95,7 @@ fun RecyclerCompose(
                 PullRefreshIndicator(refreshing, state, Modifier.align(Alignment.TopCenter))
             }
         }
+
         is ViewResource.Loading -> {
             Indicator()
         }
@@ -95,6 +107,8 @@ fun RecyclerCompose(
         is ViewResource.Error -> {
             CharacterError()
         }
+
+        else -> {}
     }
 
 

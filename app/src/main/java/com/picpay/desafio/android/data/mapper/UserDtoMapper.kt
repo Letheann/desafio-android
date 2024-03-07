@@ -4,7 +4,7 @@ import com.picpay.desafio.android.data.model.User
 import com.picpay.desafio.android.data.model.UserDto
 import com.picpay.desafio.android.core.repository.BaseMapper
 
-object UserEntityMapper : BaseMapper<User, UserDto>() {
+object UserDtoMapper : BaseMapper<User, UserDto>() {
     override fun transformTo(source: User): UserDto =
         UserDto(
             id = source.id,
