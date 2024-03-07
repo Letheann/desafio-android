@@ -22,7 +22,6 @@ import androidx.compose.material.pullrefresh.rememberPullRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -32,6 +31,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalLifecycleOwner
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil.compose.rememberAsyncImagePainter
 import com.picpay.desafio.android.core.presentation.ViewResource
 import com.picpay.desafio.android.data.model.User
@@ -48,7 +48,7 @@ fun RecyclerCompose(
     disposable: () -> Unit = {}
 ) {
 
-    val uiState by viewModel.state.collectAsState()
+    val uiState by viewModel.state.collectAsStateWithLifecycle()
 
     val lifecycleOwner = LocalLifecycleOwner.current
 
@@ -84,9 +84,16 @@ fun RecyclerCompose(
                 PullRefreshIndicator(refreshing, state, Modifier.align(Alignment.TopCenter))
             }
         }
+        is ViewResource.Loading -> {
+            Indicator()
+        }
 
-        else -> {
+        is ViewResource.Empty -> {
+            CharacterEmpty()
+        }
 
+        is ViewResource.Error -> {
+            CharacterError()
         }
     }
 

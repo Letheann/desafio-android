@@ -32,7 +32,8 @@ fun CharacterError(
             Text(
                 text = "Error State",
                 style = MaterialTheme.typography.h6,
-                maxLines = 1
+                maxLines = 1,
+                color = Color.Black
             )
         }
     }

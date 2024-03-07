@@ -37,6 +37,7 @@ class ComposePlugin : Plugin<Project> {
             implementation(libs.getLibrary("compose.ui.tooling.preview"))
             implementation(libs.getLibrary("compose.coil"))
             implementation(libs.getLibrary("compose.viewmodel"))
+            implementation(libs.getLibrary("compose.lifecycle"))
 
             debugImplementation(libs.getLibrary("compose.ui.tooling"))
             debugImplementation(libs.getLibrary("compose.manifest"))
