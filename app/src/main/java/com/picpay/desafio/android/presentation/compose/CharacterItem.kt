@@ -59,11 +59,11 @@ fun RecyclerCompose(
         when (lifecycleState) {
             Lifecycle.State.RESUMED -> {
                 if (uiState.items == null) {
-                    viewModel.intent(ViewIntent.UpdateUiCharsByCache)
+                    viewModel.intent(ViewIntent.UpdateUiUsersByCache)
                 }
             }
             Lifecycle.State.CREATED -> {
-                viewModel.intent(ViewIntent.UpdateUiChars)
+                viewModel.intent(ViewIntent.UpdateUiUsers)
             }
 
             else -> {}

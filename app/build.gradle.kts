@@ -44,5 +44,9 @@ dependencies {
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
+
+    // android tests
+    androidTestImplementation(libs.bundles.androidTest)
+    testImplementation(libs.bundles.unitTest)
 }
 

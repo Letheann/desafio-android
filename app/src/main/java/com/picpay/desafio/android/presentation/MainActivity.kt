@@ -23,7 +23,7 @@ class MainActivity : AppCompatActivity() {
                     viewModel.intent(ViewIntent.OnClickCard)
                 },
                 refreshItems = {
-                    viewModel.intent(ViewIntent.UpdateUiCharsByCache)
+                    viewModel.intent(ViewIntent.UpdateUiUsersByCache)
                 })
         }
         handleViewEffect()

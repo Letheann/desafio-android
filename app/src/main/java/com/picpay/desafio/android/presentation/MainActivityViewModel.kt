@@ -18,7 +18,7 @@ class MainActivityViewModel(private val useCase: PicPayUseCase) :
     override fun intent(intent: ViewIntent) {
         viewModelScope.launch {
             when (intent) {
-                is ViewIntent.UpdateUiChars -> {
+                is ViewIntent.UpdateUiUsers -> {
                     useCase.getUsers().onStart {
                         setState {
                             copy(items = ViewResource.Loading())
@@ -43,11 +43,11 @@ class MainActivityViewModel(private val useCase: PicPayUseCase) :
                     setEffect { ViewEffect.ShowToastItem }
                 }
 
-                is ViewIntent.UpdateUiCharsByCache -> {
+                is ViewIntent.UpdateUiUsersByCache -> {
                     useCase.getUsersByCache().catch {
-                        intent(ViewIntent.UpdateUiChars)
+                        intent(ViewIntent.UpdateUiUsers)
                     }.onEmpty {
-                        intent(ViewIntent.UpdateUiChars)
+                        intent(ViewIntent.UpdateUiUsers)
                     }.collect {
                         setState {
                             copy(items = ViewResource.Success(data = it))
@@ -61,8 +61,8 @@ class MainActivityViewModel(private val useCase: PicPayUseCase) :
 
 
 sealed class ViewIntent : BaseMviViewModel.BaseViewIntent {
-    object UpdateUiChars : ViewIntent()
-    object UpdateUiCharsByCache : ViewIntent()
+    object UpdateUiUsers : ViewIntent()
+    object UpdateUiUsersByCache : ViewIntent()
     object OnClickCard : ViewIntent()
 }
 
