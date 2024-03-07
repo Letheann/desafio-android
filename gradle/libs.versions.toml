@@ -12,6 +12,7 @@ compose_bom = "2023.10.01"
 compose_navigation = "2.7.6"
 compose_viewmodel = "2.6.2"
 compose_junit4 = "1.5.4"
+compose_coil = "2.4.0"
 
 #Koin
 koin = "3.4.0"
@@ -99,7 +100,7 @@ support_cameraCore = { group = "androidx.camera", name = "camera-core", version.
 
 # Compose
 compose_bom = { module = "androidx.compose:compose-bom", version.ref = "compose_bom" }
-compose_material = { module = "androidx.compose.material:material"}
+compose_material = { module = "androidx.compose.material:material" }
 compose_ui = { module = "androidx.compose.ui:ui" }
 compose_toolingpreview = { module = "androidx.compose.ui:ui-tooling-preview" }
 compose_foundation = { module = "androidx.compose.foundation:foundation" }
@@ -107,12 +108,13 @@ compose_navigation = { group = "androidx.navigation", name = "navigation-compose
 compose_ui_tooling = { module = "androidx.compose.ui:ui-tooling" }
 compose_ui_tooling_preview = { module = "androidx.compose.ui:ui-tooling-preview" }
 compose_ui_test = { module = "androidx.compose.ui:ui-test-junit4" }
-compose_ui_navigation = { module = "androidx.navigation:navigation-testing" , version.ref = "compose_navigation"}
+compose_ui_navigation = { module = "androidx.navigation:navigation-testing", version.ref = "compose_navigation" }
 compose_manifest = { module = "androidx.compose.ui:ui-test-manifest" }
 compose_uitest = { module = "androidx.compose.ui:ui-test" }
-compose_junit4 = { module = "androidx.compose.ui:ui-test-junit4",  version.ref = "compose_junit4" }
+compose_junit4 = { module = "androidx.compose.ui:ui-test-junit4", version.ref = "compose_junit4" }
 compose_viewmodel = { module = "androidx.lifecycle:lifecycle-viewmodel-compose", version.ref = "compose_viewmodel" }
 compose_runtime_livedata = { module = "androidx.compose.runtime:runtime-livedata" }
+compose_coil = { module = "io.coil-kt:coil-compose", version.ref = "compose_coil" }
 
 #Navigation
 navigation_fragment = { group = "androidx.navigation", name = "navigation-fragment-ktx", version.ref = "navigation" }
@@ -211,7 +213,7 @@ koin_compose = { group = "io.insert-koin", name = "koin-androidx-compose", versi
 # Plugins
 gradle_plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle_plugin" }
 kotlin_plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
-navigation_plugin = { group = "androidx.navigation", name="navigation-safe-args-gradle-plugin" , version.ref = "navigation" }
+navigation_plugin = { group = "androidx.navigation", name = "navigation-safe-args-gradle-plugin", version.ref = "navigation" }
 
 [bundles]
 koin = ["koin_workManager", "koin_android", "koin_androidCompat"]
@@ -220,7 +222,7 @@ retrofit = ["retrofit_convertJson", "retrofit_convertScalars", "retrofit_convert
 okhttp = ["okHttp3_core", "okHttp3_interceptor"]
 androidSupport = ["support_annotation", "support_browser", "support_coreKtx", "support_vectorDrawable", "support_exifinterface"]
 androidSupportDesign = ["support_cardView", "support_design", "support_recyclerView", "support_constraintLayout"]
-unitTest = ["test_core", "test_junit", "test_viewModelTest", "test_mockk", "test_roboletric", "test_mockito", "test_koin", "test_powermockCore", "test_powermockModule", "test_powermockMockito", "test_mockitoInline", "test_mockitoKoltin", "test_coroutines", "test_koinJUnit", "test_reflection","test_truth"]
+unitTest = ["test_core", "test_junit", "test_viewModelTest", "test_mockk", "test_roboletric", "test_mockito", "test_koin", "test_powermockCore", "test_powermockModule", "test_powermockMockito", "test_mockitoInline", "test_mockitoKoltin", "test_coroutines", "test_koinJUnit", "test_reflection", "test_truth"]
 androidTest = ["androidTest_espresso", "androidTest_rules", "androidTest_mockk", "androidTest_uiautomator", "androidTest_runner", "androidTest_mockWebServer", "androidTest_ext", "androidTest_navigation", "androidTest_databinding", "androidTest_workManager", "androidTest_koin", "androidTest_room", "test_viewModelTest"]
 viewModel = ["viewModel_core", "viewModel_lifecycleExtensions", "viewModel_livedata"]
 

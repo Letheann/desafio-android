@@ -35,6 +35,9 @@ class ComposePlugin : Plugin<Project> {
             implementation(libs.getLibrary("compose.navigation"))
             implementation(libs.getLibrary("koin.compose"))
             implementation(libs.getLibrary("compose.ui.tooling.preview"))
+            implementation(libs.getLibrary("compose.coil"))
+            implementation(libs.getLibrary("compose.viewmodel"))
+
             debugImplementation(libs.getLibrary("compose.ui.tooling"))
             debugImplementation(libs.getLibrary("compose.manifest"))
 
