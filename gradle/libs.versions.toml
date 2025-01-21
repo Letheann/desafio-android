@@ -8,11 +8,11 @@ google_service = "4.4.0"
 
 #Compose
 kotlin_compiler_extension_version = "1.5.6"
-compose_bom = "2023.10.01"
-compose_navigation = "2.7.6"
-compose_viewmodel = "2.6.2"
-compose_junit4 = "1.5.4"
-compose_coil = "2.4.0"
+compose_bom = "2025.01.00"
+compose_navigation = "2.8.5"
+compose_viewmodel = "2.8.7"
+compose_junit4 = "1.7.6"
+compose_coil = "2.7.0"
 
 #Koin
 koin = "3.4.0"
@@ -31,7 +31,7 @@ core_ktx = "1.6.0"
 browser = "1.3.0"
 cardview = "1.0.0"
 recyclerview = "1.2.1"
-material = "1.4.0"
+material = "1.8.0"
 annotation = "1.2.0"
 constraint_layout = "2.1.0"
 multidex = "2.0.1"
@@ -50,6 +50,7 @@ picasso = "2.8"
 circle_image = "2.2.0"
 stetho = "1.5.1"
 coroutines_test = "1.5.1"
+encrypted = "1.1.0-alpha06"
 
 #Test
 test_junit = "4.13.2"
@@ -75,6 +76,9 @@ databinding = "4.2.2"
 #Database
 sqlite = "2.1.0"
 zetetic = "4.4.3"
+kotlin190 = "1.9.0"
+lifecycle-runtime-ktx = "2.8.7"
+activity-compose = "1.8.0"
 
 
 [libraries]
@@ -100,7 +104,9 @@ support_cameraCore = { group = "androidx.camera", name = "camera-core", version.
 
 # Compose
 compose_bom = { module = "androidx.compose:compose-bom", version.ref = "compose_bom" }
+compose_icons_extended = { module = "androidx.compose.material:material-icons-extended", version.ref = "compose_junit4"}
 compose_material = { module = "androidx.compose.material:material" }
+compose_material3 = { module = "androidx.compose.material3:material3" }
 compose_ui = { module = "androidx.compose.ui:ui" }
 compose_toolingpreview = { module = "androidx.compose.ui:ui-tooling-preview" }
 compose_foundation = { module = "androidx.compose.foundation:foundation" }
@@ -211,10 +217,16 @@ koin_android = { group = "io.insert-koin", name = "koin-android", version.ref = 
 koin_androidCompat = { group = "io.insert-koin", name = "koin-android-compat", version.ref = "koin" }
 koin_compose = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
 
+#SharedPreferences
+encrypted_sharedpreferences = { group = "androidx.security", name = "security-crypto", version.ref = "encrypted" }
+
 # Plugins
 gradle_plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle_plugin" }
 kotlin_plugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 navigation_plugin = { group = "androidx.navigation", name = "navigation-safe-args-gradle-plugin", version.ref = "navigation" }
+lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
+activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
+ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 
 [bundles]
 koin = ["koin_workManager", "koin_android", "koin_androidCompat"]
@@ -226,9 +238,11 @@ androidSupportDesign = ["support_cardView", "support_design", "support_recyclerV
 unitTest = ["test_core", "test_junit", "test_viewModelTest", "test_mockk", "test_roboletric", "test_mockito", "test_koin", "test_powermockCore", "test_powermockModule", "test_powermockMockito", "test_mockitoInline", "test_mockitoKoltin", "test_coroutines", "test_koinJUnit", "test_reflection", "test_truth"]
 androidTest = ["androidTest_espresso", "androidTest_rules", "androidTest_mockk", "androidTest_uiautomator", "androidTest_runner", "androidTest_mockWebServer", "androidTest_ext", "androidTest_navigation", "androidTest_databinding", "androidTest_workManager", "androidTest_koin", "androidTest_room", "test_viewModelTest"]
 viewModel = ["viewModel_core", "viewModel_lifecycleExtensions", "viewModel_livedata"]
+sharedpreferences = ["encrypted_sharedpreferences"]
 
 [plugins]
 android_application = { id = "com.android.application", version.ref = "gradle_plugin" }
 google_gms = { id = "com.google.gms.google-services", version.ref = "google_service" }
 ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 room = { id = "androidx.room", version.ref = "room" }
+kotlinAndroid = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin190" }

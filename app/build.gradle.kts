@@ -15,6 +15,17 @@ dependencies {
 
     implementation(libs.support.multDex)
     implementation(libs.bundles.kotlin)
+    implementation(libs.lifecycle.runtime.ktx)
+    implementation(libs.activity.compose)
+    implementation(platform(libs.compose.bom))
+    implementation(libs.compose.ui)
+    implementation(libs.ui.graphics)
+    implementation(libs.compose.toolingpreview)
+    implementation(libs.compose.material3)
+    androidTestImplementation(platform(libs.compose.bom))
+    androidTestImplementation(libs.compose.ui.test)
+    debugImplementation(libs.compose.ui.tooling)
+    debugImplementation(libs.compose.manifest)
     ksp(libs.room.compiler)
 
     // Retrofit
@@ -44,6 +55,9 @@ dependencies {
     implementation(libs.room.runtime)
     implementation(libs.room.ktx)
     ksp(libs.room.compiler)
+
+    // encrypted sharedpreferences
+    implementation(libs.bundles.sharedpreferences)
 
     // android tests
     androidTestImplementation(libs.bundles.androidTest)

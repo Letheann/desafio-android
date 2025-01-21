@@ -1,7 +1,6 @@
-import org.gradle.api.Project
 import java.io.File
 import java.io.FileInputStream
-import java.util.*
+import java.util.Properties
 
 object Config {
     const val applicationId = "br.com.desafio.android"

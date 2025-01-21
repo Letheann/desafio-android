@@ -30,6 +30,7 @@ class ComposePlugin : Plugin<Project> {
         dependencies {
             implementation(platform(libs.getLibrary("compose.bom")))
             implementation(libs.getLibrary("compose.material"))
+            implementation(libs.getLibrary("compose.material3"))
             implementation(libs.getLibrary("compose.foundation"))
             implementation(libs.getLibrary("compose.ui"))
             implementation(libs.getLibrary("compose.navigation"))
@@ -38,6 +39,9 @@ class ComposePlugin : Plugin<Project> {
             implementation(libs.getLibrary("compose.coil"))
             implementation(libs.getLibrary("compose.viewmodel"))
             implementation(libs.getLibrary("compose.lifecycle"))
+            implementation(libs.getLibrary("compose.icons.extended"))
+
+
 
             debugImplementation(libs.getLibrary("compose.ui.tooling"))
             debugImplementation(libs.getLibrary("compose.manifest"))

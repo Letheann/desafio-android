@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">PicPay</string>
+    <string name="app_name">Mercantil</string>
     <string name="title">Contatos</string>
     <string name="error">Ocorreu um erro. Tente novamente.</string>
+    <string name="title_activity_demonstration">DemonstrationActivity</string>
+    <string name="title_activity_users">UsersActivity</string>
 
 </resources>
