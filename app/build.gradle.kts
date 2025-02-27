@@ -1,3 +1,6 @@
+import extensions.buildConfigStringField
+import extensions.getLocalProperty
+
 plugins {
     id("applicationPlugin")
     id("composePlugin")
@@ -7,6 +10,16 @@ android {
     buildFeatures {
         dataBinding = true
         viewBinding = true
+    }
+    buildTypes.forEach {
+        try {
+            it.buildConfigStringField("BASE_URL", "https://rest.coinapi.io")
+            it.buildConfigStringField("KEY_PUBLIC", getLocalProperty("key.public"))
+            it.buildConfigStringField("KEY_PRIVATE", getLocalProperty("key.private"))
+        } catch (ignored: Exception) {
+            throw InvalidUserDataException("Defina as chaves 'key.public' e" +
+                    "'key.private' em local.properties.")
+        }
     }
 }
 

@@ -1,7 +1,6 @@
 package com.desafio.android
 
 import com.desafio.android.core.presentation.ViewResource
-import com.desafio.android.data.model.Logs
 import com.desafio.android.domain.user.LogsUseCase
 import com.desafio.android.presentation.logs.presentation.LogsViewModel
 import com.desafio.android.presentation.logs.presentation.ViewIntent

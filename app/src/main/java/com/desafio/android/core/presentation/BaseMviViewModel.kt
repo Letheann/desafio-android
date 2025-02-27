@@ -50,5 +50,4 @@ sealed class ViewResource<T> {
 
     class Error<T> : ViewResource<T>()
     class Loading<T> : ViewResource<T>()
-    class Empty<T> : ViewResource<T>()
 }
