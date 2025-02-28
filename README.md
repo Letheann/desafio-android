@@ -44,6 +44,17 @@ O projeto segue a arquitetura **MVI (Model-View-Intent)**, onde:
    - Utilizamos **MockK** para mockar as dependências e garantir que os métodos do **ViewModel** e **UseCases** sejam chamados corretamente.
    - O uso de **JUnit** permite que os testes sejam executados de forma simples e eficiente.
 
+## Configuração da API
+
+Para utilizar os serviços da **CoinAPI.io**, é necessário configurar as chaves de API no arquivo `local.properties`. Adicione as seguintes linhas ao arquivo:
+
+```
+key.public = 1f8bac3e-021e-4315-8b3e-d9d1e657c39f
+key.private = 1f8bac3e-021e-4315-8b3e-d9d1e657c39f
+```
+
+Isso garantirá que o aplicativo tenha acesso à API e possa obter os dados necessários para seu funcionamento.
+
 ## Como Rodar o Projeto
 
 1. Clone este repositório:
@@ -69,8 +80,8 @@ Para mudar para o branch 'MercadoBitcoin', siga os passos abaixo:
    ```bash
    git checkout MercadoBitcoin
    ```
+
 ## Licença
 
 Este projeto é licenciado sob a [Licença MIT](LICENSE).
 
----
