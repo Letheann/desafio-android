@@ -1,9 +1,10 @@
 package com.desafio.android
 
 import com.desafio.android.core.presentation.ViewResource
-import com.desafio.android.domain.user.LogsUseCase
-import com.desafio.android.presentation.logs.presentation.LogsViewModel
-import com.desafio.android.presentation.logs.presentation.ViewIntent
+import com.desafio.android.data.model.Exchange
+import com.desafio.android.domain.ExchangeUseCase
+import com.desafio.android.presentation.presentation.ViewIntent
+import com.desafio.android.presentation.presentation.WelcomeViewModel
 import io.mockk.coEvery
 import io.mockk.mockk
 import io.mockk.verify
@@ -22,13 +23,13 @@ class ViewModelTest {
 
     @get:Rule
     val coroutineTestRule = CoroutinesTestRule()
-    private var useCase: LogsUseCase = mockk(relaxed = true)
-    private lateinit var viewModel: LogsViewModel
+    private var useCase: ExchangeUseCase = mockk(relaxed = true)
+    private lateinit var viewModel: WelcomeViewModel
 
 
     @Before
     fun setup() {
-        viewModel = LogsViewModel(useCase)
+        viewModel = WelcomeViewModel(useCase)
     }
 
     @After
@@ -40,10 +41,30 @@ class ViewModelTest {
     fun `given usecase returns data items when calls intent then returns loading and success state`() =
         runBlocking {
             //given
-            coEvery { useCase.getLogsByCache() } returns flowOf(listOf(Logs("", 0)))
+            coEvery { useCase.getExchanges() } returns flowOf(
+                listOf(
+                    Exchange(
+                        exchangeId = "",
+                        website = "",
+                        name = "",
+                        dataStart = "",
+                        dataEnd = "",
+                        dataQuoteStart = "",
+                        dataQuoteEnd = "",
+                        dataOrderbookStart = "",
+                        dataOrderbookEnd = "",
+                        dataTradeStart = "",
+                        dataTradeEnd = "",
+                        dataSymbolsCount = 0,
+                        volume1hrsUsd = 0.0,
+                        volume1dayUsd = 0.0,
+                        volume1mthUsd = 0.0
+                    )
+                )
+            )
 
             //when
-            viewModel.intent(ViewIntent.UpdateUi)
+            viewModel.intent(ViewIntent.GetExchange)
 
             //then
             verify(exactly = 1) { viewModel.currentState.items is ViewResource.Loading }
@@ -55,29 +76,34 @@ class ViewModelTest {
     fun `given usecase returns exception when calls intent then returns loading and error state`() =
         runBlocking {
             //given
-            coEvery { useCase.getLogsByCache() } throws Exception()
+            coEvery { useCase.getExchanges() } returns flowOf(
+                listOf(
+                    Exchange(
+                        exchangeId = "",
+                        website = "",
+                        name = "",
+                        dataStart = "",
+                        dataEnd = "",
+                        dataQuoteStart = "",
+                        dataQuoteEnd = "",
+                        dataOrderbookStart = "",
+                        dataOrderbookEnd = "",
+                        dataTradeStart = "",
+                        dataTradeEnd = "",
+                        dataSymbolsCount = 0,
+                        volume1hrsUsd = 0.0,
+                        volume1dayUsd = 0.0,
+                        volume1mthUsd = 0.0
+                    )
+                )
+            )
 
             //when
-            viewModel.intent(ViewIntent.UpdateUi)
+            viewModel.intent(ViewIntent.GetExchange)
 
             //then
             verify(exactly = 1) { viewModel.currentState.items is ViewResource.Loading }
             verify(exactly = 1) { viewModel.currentState.items is ViewResource.Error }
-
-        }
-
-    @Test
-    fun `given usecase returns empty when calls intent then returns loading and empty state`() =
-        runBlocking {
-            //given
-            coEvery { useCase.getLogsByCache() } throws Exception()
-
-            //when
-            viewModel.intent(ViewIntent.UpdateUi)
-
-            //then
-            verify(exactly = 1) { viewModel.currentState.items is ViewResource.Loading }
-            verify(exactly = 1) { viewModel.currentState.items is ViewResource.Empty }
 
         }
 }

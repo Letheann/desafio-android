@@ -1,9 +1,7 @@
 package com.desafio.android.domain
 
-import com.desafio.android.data.repository.LogsRepository
-import com.desafio.android.domain.user.LogsUseCase
-import com.desafio.android.domain.user.LogsUseCaseImpl
 import com.desafio.android.CoroutinesTestRule
+import com.desafio.android.data.repository.ExchangeRepository
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.Dispatchers
@@ -20,13 +18,13 @@ class UseCaseTest {
 
     @get:Rule
     val coroutineTestRule = CoroutinesTestRule()
-    private val repository: LogsRepository = mockk(relaxed = true)
-    private lateinit var useCase: LogsUseCase
+    private val repository: ExchangeRepository = mockk(relaxed = true)
+    private lateinit var useCase: ExchangeUseCase
     
 
     @Before
     fun setup() {
-        useCase = LogsUseCaseImpl(repository)
+        useCase = ExchangeUseCaseImpl(repository)
     }
 
     @After
@@ -36,8 +34,8 @@ class UseCaseTest {
 
     @Test
     fun `given fetch data items when calls repository then returns list`() = runBlocking {
-        useCase.getLogsByCache()
-        coVerify(exactly = 1) { repository.getLogsByCache() }
+        useCase.getExchanges()
+        coVerify(exactly = 1) { repository.getDataFromApi() }
     }
 
 
