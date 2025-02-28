@@ -1,70 +1,76 @@
-# Projeto de Gerenciamento de Dados
+# Desafio Android
 
-Este projeto é uma aplicação que gerencia dados sensíveis, onde implementamos várias funcionalidades como criptografia de dados, persistência de informações usando o Room, e organização com a arquitetura MVI (Model-View-Intent). A seguir, são descritas as tecnologias e funcionalidades implementadas:
+Este projeto é uma aplicação Android desenvolvida com foco em testes de UI e integração, utilizando **Jetpack Compose** para a interface de usuário e **MockK** para testes unitários e de UI. A arquitetura utilizada segue o padrão **MVI (Model-View-Intent)** para uma estrutura clara e escalável. A seguir, são descritas as tecnologias e funcionalidades implementadas.
 
 ## Tecnologias Utilizadas
 
-- **Compose**: Utilizado para a criação da interface de usuário de forma declarativa.
-- **Gradle**: Utilizado para gerenciamento de dependências e configuração do build do projeto.
-- **Room**: Persistência de dados, utilizado para salvar e gerenciar logs.
-- **Coroutines**: Usadas para execução assíncrona, garantindo performance no carregamento de dados.
-- **Cryptografia**: Implementação de criptografia de dados utilizando `Cipher` e `EncryptedSharedPreferences` com codificação em Base64.
-- **MVI Architecture**: Arquitetura Model-View-Intent foi utilizada para organizar o fluxo de dados entre a UI e a camada de negócios de forma clara e escalável.
-- **Testes Unitários**: Implementação de testes unitários para garantir a integridade das funcionalidades.
+- **Jetpack Compose**: Framework moderno para criação de interfaces de usuário de forma declarativa e reativa.
+- **Gradle**: Gerenciamento de dependências e configuração do build do projeto.
+- **Coroutines**: Execução assíncrona de tarefas, garantindo a performance no carregamento de dados e interações com a UI.
+- **MockK**: Framework utilizado para mockar objetos e realizar testes unitários e de integração.
+- **JUnit**: Framework de testes para garantir a qualidade e integridade das funcionalidades do projeto.
+- **MVI Architecture**: Arquitetura Model-View-Intent, que organiza o fluxo de dados e ações de maneira eficiente e fácil de testar.
 
 ## Funcionalidades
 
-O aplicativo possui três telas principais:
+O aplicativo possui as seguintes funcionalidades principais:
 
-1. **Tela de Login**:
-   - A tela de login permite que o usuário faça a autenticação no sistema.
+1. **Tela de Listagem de Itens (RecyclerView)**:
+   - Exibe uma lista de itens que podem ser clicados para exibir detalhes adicionais.
+   - Utiliza o **Jetpack Compose** para renderizar a interface de forma eficiente.
 
-2. **Tela de Apresentação de Dados**:
-   - Exibe dados criptografados e descriptografados ao mesmo tempo.
-   - A criptografia de dados é realizada utilizando o `Cipher` e `EncryptedSharedPreferences` com Base64 para garantir segurança.
-
-3. **Tela de Logs**:
-   - Exibe logs de ações realizadas no aplicativo.
-   - Logs são persistidos no banco de dados utilizando o Room para garantir a persistência e integridade dos dados.
+2. **Navegação entre Telas**:
+   - A navegação é realizada ao clicar nos itens da lista, acionando um efeito que dispara a navegação para uma tela de detalhes.
+   - O fluxo de navegação é controlado através da arquitetura **MVI**, com **ViewEffect** para gerenciar os efeitos.
 
 ## Arquitetura
 
-A arquitetura do projeto segue o padrão **MVI (Model-View-Intent)**, proporcionando um fluxo claro e eficiente de dados e ações dentro do aplicativo. A implementação de coroutines também garante que as tarefas assíncronas sejam tratadas de forma adequada.
+O projeto segue a arquitetura **MVI (Model-View-Intent)**, onde:
 
-## Criptografia de Dados
+- **Model**: A lógica de negócios e os dados são gerenciados por `ViewModel`s e `UseCases`.
+- **View**: A interface de usuário é construída com **Jetpack Compose** e controlada pelo `ViewModel`.
+- **Intent**: As ações do usuário são mapeadas como **Intents**, que são enviadas ao `ViewModel` para atualizar o estado da UI.
+- **ViewEffect**: Efeitos de navegação ou interações que podem ser desencadeados como resposta aos **Intents**.
 
-Para garantir a segurança dos dados sensíveis, implementamos criptografia de dados no aplicativo utilizando:
+### MVI Workflow
 
-- **Cipher**: Para criptografar e descriptografar informações.
-- **EncryptedSharedPreferences**: Para armazenar dados sensíveis de maneira segura.
-- **Base64**: Para codificar os dados criptografados antes de serem armazenados.
+1. O **View** (UI) envia **Intents** para o **ViewModel**.
+2. O **ViewModel** manipula esses **Intents**, atualiza o **State** e pode gerar **ViewEffects**.
+3. O **View** reage a esses **State** e **ViewEffects**, atualizando a interface e executando ações como navegação ou animações.
 
-## Persistência de Dados
+## Testes
 
-Os logs gerados pelo aplicativo são persistidos utilizando a biblioteca **Room**. Isso garante que os dados importantes, como o histórico de ações do usuário, sejam armazenados de maneira eficiente e recuperados posteriormente quando necessário.
-
-## Coroutines
-
-A utilização de **coroutines** permite o processamento assíncrono, melhorando a performance do aplicativo e evitando bloqueios na interface do usuário durante operações de leitura/escrita de dados.
-
-## Testes Unitários
-
-A aplicação foi desenvolvida com a prática de **testes unitários** para garantir que cada unidade do código funcione corretamente. A estrutura de testes ajuda a validar o comportamento da criptografia, persistência de logs, e outras funcionalidades importantes.
+**Testes Unitários**:
+   - Utilizamos **MockK** para mockar as dependências e garantir que os métodos do **ViewModel** e **UseCases** sejam chamados corretamente.
+   - O uso de **JUnit** permite que os testes sejam executados de forma simples e eficiente.
 
 ## Como Rodar o Projeto
 
 1. Clone este repositório:
    ```bash
-   git clone https://github.com/Letheann/desafio-android.git
+   git clone https://github.com/seu-usuario/desafio-android.git
+   ```
 
+2. Abra o projeto no Android Studio.
 
-## Como Mudar para o Branch 'mercantil'
+3. Compile e execute o projeto no emulador ou dispositivo físico.
 
-Para mudar para o branch 'mercantil', siga os passos abaixo:
+4. Para rodar os testes, execute o comando abaixo:
+   ```bash
+   ./gradlew test
+   ```
+
+## Como Mudar para o Branch 'MercadoBitcoin'
+
+Para mudar para o branch 'MercadoBitcoin', siga os passos abaixo:
 
 1. Abra o terminal no diretório do projeto.
 2. Execute o comando:
    ```bash
-   git checkout mercantil
+   git checkout MercadoBitcoin
+   ```
+## Licença
 
+Este projeto é licenciado sob a [Licença MIT](LICENSE).
 
+---
