@@ -1,5 +1,3 @@
-import org.gradle.kotlin.dsl.`kotlin-dsl`
-
 plugins {
     `kotlin-dsl`
 }
@@ -25,6 +23,10 @@ gradlePlugin {
         register("composePlugin") {
             id = "composePlugin"
             implementationClass = "plugin.ComposePlugin"
+        }
+        register("kmpPlugin") {
+            id = "kmpPlugin"
+            implementationClass = "plugin.KmpPlugin"
         }
     }
 }

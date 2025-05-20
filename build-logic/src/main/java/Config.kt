@@ -5,6 +5,7 @@ import java.util.Properties
 object Config {
     const val applicationId = "br.com.desafio.android"
     const val applicationIdTest = "br.com.desafio"
+    const val kmpModule = "com.desafio.kmp"
     const val resConfig = "pt"
     val versionName = getCurrentVersionName()
     val versionCode = getCurrentVersionCode()

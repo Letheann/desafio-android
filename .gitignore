@@ -1,13 +1,72 @@
+# =========================
+# Build Folders
+# =========================
+**/build/
+build/
+
+# build-logic module build folder
+build-logic/build/
+
+# =========================
+# Gradle Files
+# =========================
+.gradle/
+gradle-app.setting
+gradle-wrapper.jar
+gradle-wrapper.properties
+.gradle-cache/
+
+# =========================
+# Local IDE settings (IntelliJ/Android Studio)
+# =========================
+.idea/
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
+*.iws
+*.ipr
+*.log
+
+# =========================
+# Kotlin and Java compiled files
+# =========================
+*.class
+*.jar
+*.war
+*.ear
+*.class
+
+# =========================
+# Android specific
+# =========================
+captures/
+.externalNativeBuild/
+.cxx/
+*.apk
+*.ap_
+*.dex
+*.class
+*.so
+*.log
+
+# =========================
+# User-specific files
+# =========================
+local.properties
+*.swp
+*~
+*.tmp
+
+# =========================
+# OS generated files
+# =========================
 .DS_Store
-/build
-/captures
-.externalNativeBuild
+Thumbs.db
+
+# =========================
+# KSP generated files (optional)
+# =========================
+.ksp/
+
+# =========================
+# Others
+# =========================
+out/

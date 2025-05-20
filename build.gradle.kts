@@ -5,15 +5,7 @@ plugins {
     alias(libs.plugins.ksp) apply false
     alias(libs.plugins.room) apply false
     alias(libs.plugins.kotlinAndroid) apply false
-}
-
-
-buildscript {
-    dependencies {
-        classpath(libs.kotlin.plugin)
-        classpath(libs.gradle.plugin)
-        classpath(libs.navigation.plugin)
-    }
+    alias(libs.plugins.jetbrains.kotlin.jvm) apply false
 }
 
 allprojects{
