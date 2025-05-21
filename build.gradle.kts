@@ -13,7 +13,6 @@ allprojects{
         resolutionStrategy.force(libs.okHttp3.core)
         resolutionStrategy.force(libs.okHttp3.core)
         resolutionStrategy.force(libs.test.objenesis)
-        resolutionStrategy.force(libs.image.picasso)
     }
 }
 

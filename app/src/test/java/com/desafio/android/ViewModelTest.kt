@@ -1,10 +1,10 @@
 package com.desafio.android
 
 import com.desafio.android.core.presentation.ViewResource
-import com.desafio.android.data.model.Exchange
-import com.desafio.android.domain.ExchangeUseCase
 import com.desafio.android.presentation.presentation.ViewIntent
 import com.desafio.android.presentation.presentation.WelcomeViewModel
+import com.example.shared.commonMain.data.dto.HPCharacter
+import com.example.shared.commonMain.usecase.CharacterUseCase
 import io.mockk.coEvery
 import io.mockk.mockk
 import io.mockk.verify
@@ -23,7 +23,7 @@ class ViewModelTest {
 
     @get:Rule
     val coroutineTestRule = CoroutinesTestRule()
-    private var useCase: ExchangeUseCase = mockk(relaxed = true)
+    private var useCase: CharacterUseCase = mockk(relaxed = true)
     private lateinit var viewModel: WelcomeViewModel
 
 
@@ -41,30 +41,19 @@ class ViewModelTest {
     fun `given usecase returns data items when calls intent then returns loading and success state`() =
         runBlocking {
             //given
-            coEvery { useCase.getExchanges() } returns flowOf(
+            coEvery { useCase.getCharacters() } returns flowOf(
                 listOf(
-                    Exchange(
-                        exchangeId = "",
-                        website = "",
+                    HPCharacter(
                         name = "",
-                        dataStart = "",
-                        dataEnd = "",
-                        dataQuoteStart = "",
-                        dataQuoteEnd = "",
-                        dataOrderbookStart = "",
-                        dataOrderbookEnd = "",
-                        dataTradeStart = "",
-                        dataTradeEnd = "",
-                        dataSymbolsCount = 0,
-                        volume1hrsUsd = 0.0,
-                        volume1dayUsd = 0.0,
-                        volume1mthUsd = 0.0
+                        species = "",
+                        house = "",
+                        image = ""
                     )
                 )
             )
 
             //when
-            viewModel.intent(ViewIntent.GetExchange)
+            viewModel.intent(ViewIntent.GetHPCharaters)
 
             //then
             verify(exactly = 1) { viewModel.currentState.items is ViewResource.Loading }
@@ -76,30 +65,19 @@ class ViewModelTest {
     fun `given usecase returns exception when calls intent then returns loading and error state`() =
         runBlocking {
             //given
-            coEvery { useCase.getExchanges() } returns flowOf(
+            coEvery { useCase.getCharacters() } returns flowOf(
                 listOf(
-                    Exchange(
-                        exchangeId = "",
-                        website = "",
+                    HPCharacter(
                         name = "",
-                        dataStart = "",
-                        dataEnd = "",
-                        dataQuoteStart = "",
-                        dataQuoteEnd = "",
-                        dataOrderbookStart = "",
-                        dataOrderbookEnd = "",
-                        dataTradeStart = "",
-                        dataTradeEnd = "",
-                        dataSymbolsCount = 0,
-                        volume1hrsUsd = 0.0,
-                        volume1dayUsd = 0.0,
-                        volume1mthUsd = 0.0
+                        species = "",
+                        house = "",
+                        image = ""
                     )
                 )
             )
 
             //when
-            viewModel.intent(ViewIntent.GetExchange)
+            viewModel.intent(ViewIntent.GetHPCharaters)
 
             //then
             verify(exactly = 1) { viewModel.currentState.items is ViewResource.Loading }

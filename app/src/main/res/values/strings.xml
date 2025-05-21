@@ -1,8 +1,3 @@
 <resources>
-    <string name="app_name">Mercado-Bitcoin</string>
-    <string name="title">Contatos</string>
-    <string name="error">Ocorreu um erro. Tente novamente.</string>
-    <string name="title_activity_demonstration">DemonstrationActivity</string>
-    <string name="title_activity_users">UsersActivity</string>
-
+    <string name="app_name">Kotlin Multiplataform Harry Potter</string>
 </resources>

@@ -1,87 +1,73 @@
-# Desafio Android
+# Android Challenge
 
-Este projeto é uma aplicação Android desenvolvida com foco em testes de UI e integração, utilizando **Jetpack Compose** para a interface de usuário e **MockK** para testes unitários e de UI. A arquitetura utilizada segue o padrão **MVI (Model-View-Intent)** para uma estrutura clara e escalável. A seguir, são descritas as tecnologias e funcionalidades implementadas.
+This project is a **Kotlin Multiplatform (KMP)** application using **Jetpack Compose**, **Ktor**,
+and **Koin**, following an **MVVM + MVI** architecture. Gradle configuration and dependency
+management are centralized through a modularized `build_logic` setup using the **Gradle Version
+Catalog** and custom plugins.
 
-## Tecnologias Utilizadas
+## Technologies Used
 
-- **Jetpack Compose**: Framework moderno para criação de interfaces de usuário de forma declarativa e reativa.
-- **Gradle**: Gerenciamento de dependências e configuração do build do projeto.
-- **Coroutines**: Execução assíncrona de tarefas, garantindo a performance no carregamento de dados e interações com a UI.
-- **MockK**: Framework utilizado para mockar objetos e realizar testes unitários e de integração.
-- **JUnit**: Framework de testes para garantir a qualidade e integridade das funcionalidades do projeto.
-- **MVI Architecture**: Arquitetura Model-View-Intent, que organiza o fluxo de dados e ações de maneira eficiente e fácil de testar.
+- **Kotlin Multiplatform (KMP)**: Shared business logic across Android, iOS, and other platforms.
+- **Jetpack Compose**: Modern declarative UI framework for building Android interfaces.
+- **Ktor**: HTTP client for networking in Kotlin multiplatform projects.
+- **Koin**: Lightweight dependency injection framework.
+- **Coroutines & Flow**: For managing asynchronous data streams and background tasks.
+- **MVI Architecture**: Clear unidirectional data flow pattern using `Intent`, `State`, and
+  `Effect`.
+- **MVVM Pattern**: Separation of concerns between UI (View), logic (ViewModel), and business
+  rules (UseCases).
+- **Gradle build_logic**: Centralized, maintainable Gradle configuration using version catalogs and
+  plugin DSL.
+- **MockK**: Mocking library for unit testing.
+- **JUnit**: Test runner for unit and integration testing.
 
-## Funcionalidades
+## Features
 
-O aplicativo possui as seguintes funcionalidades principais:
+The application displays a simple list using **cards**, each showing the properties of the list
+items. It is structured for clarity and maintainability, serving as a solid foundation for
+multiplatform app development.
 
-1. **Tela de Listagem de Itens (RecyclerView)**:
-   - Exibe uma lista de itens que podem ser clicados para exibir detalhes adicionais.
-   - Utiliza o **Jetpack Compose** para renderizar a interface de forma eficiente.
+## Architecture
 
-2. **Navegação entre Telas**:
-   - A navegação é realizada ao clicar nos itens da lista, acionando um efeito que dispara a navegação para uma tela de detalhes.
-   - O fluxo de navegação é controlado através da arquitetura **MVI**, com **ViewEffect** para gerenciar os efeitos.
+This project implements a **Model-View-Intent (MVI)** pattern alongside **MVVM**, structured as
+follows:
 
-## Arquitetura
+- **Model**: Business logic and data transformations handled by ViewModels and UseCases.
+- **View**: Built with Jetpack Compose, observing state from ViewModels.
+- **Intent**: User actions are modeled as Intents, sent to the ViewModel.
+- **ViewEffect**: One-time effects like navigation or toasts, emitted by the ViewModel and observed
+  by the View.
 
-O projeto segue a arquitetura **MVI (Model-View-Intent)**, onde:
+### MVI Flow
 
-- **Model**: A lógica de negócios e os dados são gerenciados por `ViewModel`s e `UseCases`.
-- **View**: A interface de usuário é construída com **Jetpack Compose** e controlada pelo `ViewModel`.
-- **Intent**: As ações do usuário são mapeadas como **Intents**, que são enviadas ao `ViewModel` para atualizar o estado da UI.
-- **ViewEffect**: Efeitos de navegação ou interações que podem ser desencadeados como resposta aos **Intents**.
+1. The **View** sends an **Intent** to the **ViewModel**.
+2. The **ViewModel** processes the intent, updates the **State**, and optionally emits a *
+   *ViewEffect**.
+3. The **View** observes and reacts to the new **State** or **ViewEffect**.
 
-### MVI Workflow
+## Tests
 
-1. O **View** (UI) envia **Intents** para o **ViewModel**.
-2. O **ViewModel** manipula esses **Intents**, atualiza o **State** e pode gerar **ViewEffects**.
-3. O **View** reage a esses **State** e **ViewEffects**, atualizando a interface e executando ações como navegação ou animações.
+- **Unit Tests**:
+    - **MockK** is used to mock dependencies and verify behavior.
+    - **JUnit** is used to write and run test cases.
+    - **Kotlinx Coroutines Test** is used for coroutine-based testing.
 
-## Testes
+## How to Run the Project
 
-**Testes Unitários**:
-   - Utilizamos **MockK** para mockar as dependências e garantir que os métodos do **ViewModel** e **UseCases** sejam chamados corretamente.
-   - O uso de **JUnit** permite que os testes sejam executados de forma simples e eficiente.
-
-## Configuração da API
-
-Para utilizar os serviços da **CoinAPI.io**, é necessário configurar as chaves de API no arquivo `local.properties`. Adicione as seguintes linhas ao arquivo:
-
-```
-key.public = 1f8bac3e-021e-4315-8b3e-d9d1e657c39f
-key.private = 1f8bac3e-021e-4315-8b3e-d9d1e657c39f
-```
-
-Isso garantirá que o aplicativo tenha acesso à API e possa obter os dados necessários para seu funcionamento.
-
-## Como Rodar o Projeto
-
-1. Clone este repositório:
+1. Clone the repository:
    ```bash
-   git clone https://github.com/seu-usuario/desafio-android.git
+   git clone https://github.com/letheann/desafio-android.git
    ```
 
-2. Abra o projeto no Android Studio.
+## How to Switch to the ‘KMP’ Branch
 
-3. Compile e execute o projeto no emulador ou dispositivo físico.
+To switch to the ‘KMP’ branch, follow these steps:
 
-4. Para rodar os testes, execute o comando abaixo:
+1. Open a terminal in the project directory.
+2. Run the command:
    ```bash
-   ./gradlew test
-   ```
+   git checkout KMP
 
-## Como Mudar para o Branch 'MercadoBitcoin'
+## License
 
-Para mudar para o branch 'MercadoBitcoin', siga os passos abaixo:
-
-1. Abra o terminal no diretório do projeto.
-2. Execute o comando:
-   ```bash
-   git checkout MercadoBitcoin
-   ```
-
-## Licença
-
-Este projeto é licenciado sob a [Licença MIT](LICENSE).
-
+This project is licensed under the [MIT License](LICENSE).

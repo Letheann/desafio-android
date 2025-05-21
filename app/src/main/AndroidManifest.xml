@@ -4,7 +4,7 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
-        android:name="com.desafio.android.Application"
+        android:name="com.desafio.android.AndroidApplication"
         android:allowBackup="false"
         android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
@@ -13,10 +13,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity
-            android:name="com.desafio.android.presentation.presentation.DetailActivity"
-            android:exported="true"
-            android:windowSoftInputMode="adjustResize" />
         <activity
             android:name="com.desafio.android.presentation.presentation.WelcomeActivity"
             android:exported="true"

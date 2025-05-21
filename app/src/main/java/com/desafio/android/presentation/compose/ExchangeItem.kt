@@ -1,14 +1,19 @@
 package com.desafio.android.presentation.compose
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
 import androidx.compose.material.MaterialTheme
@@ -19,15 +24,19 @@ import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.compose.LocalLifecycleOwner
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
+import coil.compose.rememberAsyncImagePainter
 import com.desafio.android.core.presentation.ViewResource
-import com.desafio.android.data.model.Exchange
 import com.desafio.android.presentation.presentation.ViewIntent
 import com.desafio.android.presentation.presentation.WelcomeViewModel
+import com.example.shared.commonMain.data.dto.HPCharacter
 import com.picpay.desafio.android.presentation.compose.CharacterError
 
 
@@ -41,7 +50,7 @@ fun RecyclerCompose(
 
     val uiState by viewModel.state.collectAsStateWithLifecycle()
 
-    val lifecycleOwner = androidx.lifecycle.compose.LocalLifecycleOwner.current
+    val lifecycleOwner = LocalLifecycleOwner.current
 
     val lifecycleState by lifecycleOwner.lifecycle.currentStateFlow.collectAsStateWithLifecycle()
 
@@ -49,12 +58,12 @@ fun RecyclerCompose(
         when (lifecycleState) {
             Lifecycle.State.RESUMED -> {
                 if (uiState.items == null) {
-                    viewModel.intent(ViewIntent.GetExchange)
+                    viewModel.intent(ViewIntent.GetHPCharaters)
                 }
             }
 
             Lifecycle.State.CREATED -> {
-                viewModel.intent(ViewIntent.GetExchange)
+                viewModel.intent(ViewIntent.GetHPCharaters)
             }
 
             else -> {}
@@ -74,7 +83,7 @@ fun RecyclerCompose(
         is ViewResource.Success -> {
             LazyColumn(Modifier.fillMaxSize()) {
                 items(states.data) {
-                    ExchangeItem(it, invokeClick)
+                    HPChar(it, invokeClick)
                 }
 
             }
@@ -96,12 +105,12 @@ fun RecyclerCompose(
 
 @OptIn(ExperimentalMaterialApi::class)
 @Composable
-fun ExchangeItem(
-    exchange: Exchange,
-    invokeClick: (id: String) -> Unit
+fun HPChar(
+    char: HPCharacter,
+    invokeClick: (species: String) -> Unit
 ) {
     Card(
-        onClick = { invokeClick.invoke(exchange.exchangeId) },
+        onClick = { invokeClick(char.species) },
         modifier = Modifier.padding(8.dp),
         backgroundColor = MaterialTheme.colors.surface,
         elevation = 4.dp
@@ -110,28 +119,40 @@ fun ExchangeItem(
             modifier = Modifier
                 .padding(8.dp)
                 .fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween,
+            horizontalArrangement = Arrangement.Start,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            Column(
+
+            Image(
+                painter = rememberAsyncImagePainter(char.image),
+                contentDescription = char.name,
                 modifier = Modifier
-                    .weight(1f)
-                    .padding(start = 8.dp)
+                    .size(64.dp)
+                    .clip(RoundedCornerShape(8.dp))
+            )
+            Spacer(modifier = Modifier.width(8.dp))
+
+
+            Column(
+                modifier = Modifier.weight(1f)
             ) {
                 Text(
-                    text = exchange.name,
+                    text = char.name,
                     style = MaterialTheme.typography.h6.copy(color = MaterialTheme.colors.primary),
-                    maxLines = 1
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = exchange.exchangeId,
+                    text = "Species: ${char.species}",
                     style = MaterialTheme.typography.body2.copy(color = MaterialTheme.colors.onSurface),
-                    maxLines = 1
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
                 Text(
-                    text = "Volume 1 Day USD: ${exchange.volume1dayUsd}",
+                    text = "House: ${char.house}",
                     style = MaterialTheme.typography.body2.copy(color = MaterialTheme.colors.secondary),
-                    maxLines = 1
+                    maxLines = 1,
+                    overflow = TextOverflow.Ellipsis
                 )
             }
         }
@@ -147,25 +168,14 @@ fun ExchangeItemPreview() {
             .fillMaxSize()
             .background(Color.White)
     ) {
-        ExchangeItem(
-            Exchange(
+        HPChar(
+            HPCharacter(
                 name = "",
-                exchangeId = "",
-                website = "",
-                dataStart = "",
-                dataEnd = "",
-                dataQuoteStart = "",
-                dataQuoteEnd = "",
-                dataOrderbookStart = "",
-                dataOrderbookEnd = "",
-                dataTradeStart = "",
-                dataTradeEnd = "",
-                dataSymbolsCount = 0,
-                volume1hrsUsd = 0.0,
-                volume1dayUsd = 0.0,
-                volume1mthUsd = 0.0
+                species = "",
+                house = "",
+                image = "",
             ),
-            { }
+            invokeClick = { }
         )
     }
 }

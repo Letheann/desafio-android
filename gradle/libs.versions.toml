@@ -53,6 +53,7 @@ coroutines = "1.8.1"
 ktor = "2.3.5"
 coroutines_test = "1.8.1"
 encrypted = "1.1.0-alpha06"
+kotlinx-serialization = "1.6.3"
 
 #Test
 test_junit = "4.13.2"
@@ -80,7 +81,7 @@ sqlite = "2.1.0"
 zetetic = "4.4.3"
 lifecycle-runtime-ktx = "2.8.7"
 activity-compose = "1.8.0"
-jetbrains-kotlin-jvm = "1.9.24"
+jetbrains-kotlin-jvm = "1.9.21"
 
 
 [libraries]
@@ -224,9 +225,13 @@ encrypted_sharedpreferences = { group = "androidx.security", name = "security-cr
 
 
 #Kotlin MultiPlataform
+ktor-client-core = { module = "io.ktor:ktor-client-core", version.ref = "ktor" }
+ktor-client-content-negotiation = { module = "io.ktor:ktor-client-content-negotiation", version.ref = "ktor" }
 kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "coroutines" }
 ktor-client-okhttp = { module = "io.ktor:ktor-client-okhttp", version.ref = "ktor" }
 ktor-client-ios = { module = "io.ktor:ktor-client-ios", version.ref = "ktor" }
+kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinx-serialization" }
+ktor_serialization_kotlinx_json = { group = "io.ktor", name = "ktor-serialization-kotlinx-json", version.ref = "ktor" }
 
 # Plugins
 gradle_plugin = { group = "com.android.tools.build", name = "gradle", version.ref = "gradle_plugin" }

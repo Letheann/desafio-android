@@ -2,4 +2,5 @@
 
 plugins {
     id("kmpPlugin")
+    kotlin("plugin.serialization") version "1.9.23"
 }

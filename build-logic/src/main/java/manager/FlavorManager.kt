@@ -16,10 +16,3 @@ internal fun BaseExtension.createFlavor() {
         }
     }
 }
-
-internal fun BaseExtension.createFlavorEmpty() {
-    //Note: add in all modules because we need to treatment to take de covarege test e execute test in all project
-    productFlavors {
-        create("development") { }
-    }
-}
